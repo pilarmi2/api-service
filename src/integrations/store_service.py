@@ -26,7 +26,6 @@ class StoreService:
             StandardResponse: The response from the store service.
         """
         response = requests.post(self.__url + "/municipalities", data=municipality.json())
-        print(response.text)
         return StandardResponse(status=response.status_code, message=response.text)
 
     def post_income_statement(self, income_statement: IncomeStatement) -> StandardResponse:
@@ -41,7 +40,6 @@ class StoreService:
         """
         response = requests.post(self.__url + f"/municipalities/{income_statement.municipality_id}/incomeStatement",
                                  data=income_statement.json())
-        print(response.text)
         return StandardResponse(status=response.status_code, message=response.text)
 
     def post_loan_statement(self, loan_statement: LoanStatement) -> StandardResponse:
@@ -56,6 +54,4 @@ class StoreService:
         """
         response = requests.post(self.__url + f"/municipalities/{loan_statement.municipality_id}/loansStatements",
                                  data=loan_statement.json())
-
-        print(response.text)
         return StandardResponse(status=response.status_code, message=response.text)

@@ -17,7 +17,6 @@ async def search_municipality_by_id(
 ) -> Optional[Municipality]:
     municipality = finance_monitor.get_municipality(municipality_id)
     municipality.name = ares_portal.get_municipality_name(municipality_id)
-    print(municipality.name)
     response: StandardResponse = store_service.post_municipality(municipality)
 
     if response.status == 200:
