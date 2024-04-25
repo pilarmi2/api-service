@@ -34,7 +34,7 @@ class FinanceMonitor:
     def __handle_request(self, municipality_id: str, statement_type: str, period: str = None):
         with requests.Session() as session:
             monitor_response = session.post(
-                url="https://monitor.statnipokladna.cz/api/monitorws", #os.environ["HOST"],
+                url=os.environ["MONITOR"],
                 data=self.__build_soap_request(municipality_id, statement_type, period),
                 headers={"Content-Type": "text/xml; charset=utf-8"}
             )
