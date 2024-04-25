@@ -1,3 +1,4 @@
+import json
 import os
 
 import requests
@@ -50,10 +51,26 @@ class FinanceMonitor:
         return Municipality(municipality_id=municipality_id, name="", citizens=citizens)
 
     def get_income_statement(self, municipality_id, period) -> IncomeStatement:
-        statement_type: str = "002"
+        statement_type: str = "001"
         monitor_response = self.__handle_request(municipality_id, statement_type)
 
-        return IncomeStatement(municipality_id=municipality_id, assets=1000, passives=500, period=period)
+        assets: float = 0
+        for radek in monitor_response["soap:Envelope"]['soap:Body']['res:MonitorResponse']['res:VykazData']['roz:Rozvaha']['roz:Aktiva'][
+            'roz:Radek']:
+            if radek['roz:Polozka'] == 'AKTIVA':
+                assets = radek['roz:ObdobiBezneNetto']
+                break
+
+        passives: float = 0
+        for radek in \
+        monitor_response["soap:Envelope"]['soap:Body']['res:MonitorResponse']['res:VykazData']['roz:Rozvaha'][
+            'roz:Pasiva'][
+            'roz:Radek']:
+            if radek['roz:Polozka'] == 'PASIVA':
+                passives = radek['roz:ObdobiBezne']
+                break
+
+        return IncomeStatement(municipality_id=municipality_id, assets=assets, passives=passives, period=period)
 
     def get_loans_statement(self, municipality_id, period) -> LoansStatement:
         statement_type: str = "080"

@@ -20,6 +20,8 @@ class StoreService:
     def post_income_statement(self, income_statement: IncomeStatement) -> StandardResponse:
         response = requests.post(self.__url + f"/{income_statement.municipality_id}/incomeStatement",
                                  data=income_statement.json())
+
+        print(response.text)
         return StandardResponse(status=response.status_code, message=response.text)
 
     def post_loans_statement(self, loans_statement: LoansStatement) -> StandardResponse:

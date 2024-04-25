@@ -19,6 +19,6 @@ class IncomeStatement(BaseModel):
     """
 
     municipality_id: str
-    assets: int
-    passives: int
+    assets: float
+    passives: float
     period: str
