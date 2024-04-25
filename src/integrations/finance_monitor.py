@@ -1,5 +1,5 @@
-import json
 import os
+
 import requests
 
 from src.models.income_statement import IncomeStatement
