@@ -1,50 +1,50 @@
-#name: Deploy to Azure
-#
-#on:
-#  push:
-#    branches:
-#      - master
-#
-#jobs:
-#  build-and-deploy:
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#
-#    - name: Checkout GitHub Actions
-#      uses: actions/checkout@master
-#
-#
-#    # - name: Login via Azure CLI
-#    #   uses: azure/login@v1
-#    #   with:
-#    #     client-id: ${{ secrets.AZURE_CLIENT_ID }}
-#    #     tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-#    #     subscription-id: ${{ secrets.AZURE_SUB_ID }}
-#
-#
-#    - name: Login to Azure Container Registry
-#      uses: azure/docker-login@v1
-#      with:
-#        login-server: apiservice.azurecr.io
-#        username: ${{ secrets.REGISTRY_USERNAME }}
-#        password: ${{ secrets.REGISTRY_PASSWORD }}
-#
-#
-#    - name: Build and push container image to registry
-#      run: |
-#        docker build . -t apiservice.azurecr.io/api-service:1.0 #  ${{ github.sha }}
-#        docker push apiservice.azurecr.io/api-service:1.0 #  ${{ github.sha }}
-#
-#
-#    # - name: Deploy to App Service
-#    #   uses: azure/webapps-deploy@v2
-#    #   with:
-#    #     app-name: 'pilarmi2-api-service'
-#    #     images: 'apiservice.azurecr.io/api-service:${{ github.sha }}'
-#    #     slot-name: 'staging'
-#
-#
-#    # - name: Azure logout
-#    #   run: |
-#    #     az logout
+name: Deploy to Azure
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout GitHub Actions
+      uses: actions/checkout@master
+
+
+    # - name: Login via Azure CLI
+    #   uses: azure/login@v1
+    #   with:
+    #     client-id: ${{ secrets.AZURE_CLIENT_ID }}
+    #     tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+    #     subscription-id: ${{ secrets.AZURE_SUB_ID }}
+
+
+    - name: Login to Azure Container Registry
+      uses: azure/docker-login@v1
+      with:
+        login-server: pilarmi2.azurecr.io
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+
+
+    - name: Build and push container image to registry
+      run: |
+        docker build . -t pilarmi2.azurecr.io/api-service:1.0 #  ${{ github.sha }}
+        docker push pilarmi2.azurecr.io/api-service:1.0 #  ${{ github.sha }}
+
+
+    # - name: Deploy to App Service
+    #   uses: azure/webapps-deploy@v2
+    #   with:
+    #     app-name: 'pilarmi2-api-service'
+    #     images: 'apiservice.azurecr.io/api-service:${{ github.sha }}'
+    #     slot-name: 'staging'
+
+
+    # - name: Azure logout
+    #   run: |
+    #     az logout
