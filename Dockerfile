@@ -21,7 +21,7 @@ EXPOSE 8000
 
 ENV HOST="0.0.0.0"
 ENV MONITOR="https://monitor.statnipokladna.cz/api/monitorws"
-ENV STORE_SERVICE="https://pilarmi2-store-service.azurewebsites.net"
+ENV STORE_SERVICE="https://scoring-store-service.azurewebsites.net"
 ENV ARES="https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty"
 
 # Start service
