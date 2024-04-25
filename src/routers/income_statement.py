@@ -11,7 +11,7 @@ store_service: StoreService = StoreService()
 
 @router.get('')
 async def search_income_statement(
-        municipality_id: int,
+        municipality_id: str,
         period: str
 ) -> Optional[IncomeStatement]:
     income_statement = finance_monitor.get_income_statement(municipality_id, period)

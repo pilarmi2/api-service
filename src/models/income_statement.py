@@ -18,7 +18,7 @@ class IncomeStatement(BaseModel):
         period (str): The period the income statement is for.
     """
 
-    municipality_id: int
+    municipality_id: str
     assets: int
     passives: int
     period: str

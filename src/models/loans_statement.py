@@ -21,7 +21,7 @@ class LoansStatement(BaseModel):
         period (str): The period the statement of loans is for.
     """
 
-    municipality_id: int
+    municipality_id: str
     purpose: str
     agreed_amount: int
     drawn_amount: int
