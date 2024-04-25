@@ -17,6 +17,6 @@ class Municipality(BaseModel):
         citizens (int, optional): The number of citizens in the municipality. Defaults to None.
     """
 
-    municipality_id: int
+    municipality_id: str
     name: str
     citizens: int = None
