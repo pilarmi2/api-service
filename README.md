@@ -15,7 +15,7 @@
 ```pip install -r requirements.txt```
 
 ## System variables
-- Two environment variables, PORT and HOST, need to be set for proper functioning.
+- There are several environment variables that need to be set. All necessary variables can be found in the Dockerfile.
 
 ## Usage
 1. Run the main script using Python 3.9:
