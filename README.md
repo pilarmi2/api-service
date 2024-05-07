@@ -1,6 +1,9 @@
 # Api-service
 
-![image](architecture.png)
+<div style="text-align:center;">
+  <img src="architecture.png" alt="Image" style="max-width: 50%;">
+</div>
+
 
 Api-service is tasked with retrieving data from the Ministry of Finance portals. This service provides this data to the business-service and stores this data in a database using the store-service.
 
