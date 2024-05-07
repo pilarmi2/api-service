@@ -1,5 +1,13 @@
 # Api-service
 
+![image](architecture.png)
+
+Api-service is tasked with retrieving data from the Ministry of Finance portals. This service provides this data to the business-service and stores this data in a database using the store-service.
+
+## Scoring system setup
+- For the easiest way to run the whole system, go to www.github.com/pilarmi2/scoring-system-setup. If you want to run the service locally, continue reading.
+
+
 ## Prerequisites
 - Python 3.9 or higher is required for localized execution.
 - Required libraries are listed in `requirements.txt`.
@@ -15,7 +23,12 @@
 ```pip install -r requirements.txt```
 
 ## System variables
-- There are several environment variables that need to be set. All necessary variables can be found in the Dockerfile.
+- The following environment variables need to be set for proper functionality.
+  - **PORT** (Port on which the service will run)
+  - **HOST** (Address the service will run on)
+  - **STORE_SERVICE** (Store-service address)
+  - **MONITOR**="https://monitor.statnipokladna.cz/api/monitorws"
+  - **ARES**="https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty"
 
 ## Usage
 1. Run the main script using Python 3.9:
